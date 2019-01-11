@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.service.dao.RolePermissionRelationDOMapper">
+  <resultMap id="BaseResultMap" type="com.example.service.model.RolePermissionRelationDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="permission_id" jdbcType="BIGINT" property="permissionId" />
+    <result column="created_at" jdbcType="BIGINT" property="createdAt" />
+    <result column="updated_at" jdbcType="BIGINT" property="updatedAt" />
+  </resultMap>
+
+    <select id="listRolePermissionRelationDOs" parameterType="com.example.service.model.RolePermissionRelationDO" resultMap="BaseResultMap">
+        select *
+        from db_role_permission_relation
+        where 1=1
+        <if test="roleId != null">
+            and role_id = #{roleId}
+        </if>
+        <if test="permissionId != null">
+            and permission_id = #{permissionId}
+        </if>
+    </select>
+
+  <delete id="deleteByRole" parameterType="java.lang.Long">
+    delete from db_role_permission_relation
+    where role_id = #{roleId,jdbcType=BIGINT}
+  </delete>
+
+
+  <insert id="insertSelective" parameterType="com.example.service.model.RolePermissionRelationDO">
+    insert into db_role_permission_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="permissionId != null">
+        permission_id,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=BIGINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+
+
+</mapper>

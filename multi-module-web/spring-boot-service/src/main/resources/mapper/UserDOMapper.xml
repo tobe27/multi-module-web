@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.service.dao.UserDOMapper">
+  <resultMap id="BaseResultMap" type="com.example.service.model.UserDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="career" jdbcType="VARCHAR" property="career" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="created_at" jdbcType="BIGINT" property="createdAt" />
+    <result column="updated_at" jdbcType="BIGINT" property="updatedAt" />
+  </resultMap>
+
+    <resultMap id="userRoleRelationResultMap" type="com.example.service.model.UserDO" extends="BaseResultMap">
+        <collection property="roles" column="id" ofType="com.example.service.model.RoleDO" select="listRoles" >
+        </collection>
+    </resultMap>
+
+    <resultMap id="roleResultMap" type="com.example.service.model.RoleDO">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="role_en" jdbcType="VARCHAR" property="roleEn" />
+        <result column="role_ch" jdbcType="VARCHAR" property="roleCh" />
+        <result column="created_at" jdbcType="BIGINT" property="createdAt" />
+        <result column="updated_at" jdbcType="BIGINT" property="updatedAt" />
+    </resultMap>
+
+
+  <select id="getUserDO" parameterType="java.lang.Long" resultMap="userRoleRelationResultMap">
+    select *
+    from db_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="getUserDOByUsername" parameterType="java.lang.String" resultMap="userRoleRelationResultMap">
+    select *
+    from db_user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+
+    <!--获取用户的所有角色-->
+  <select id="listStringRoles" parameterType="Long" resultType="String">
+    select role.role_en
+    from db_role role
+    join db_user_role_relation ur on role.id = ur.role_id
+    where ur.user_id = #{id,jdbcType=BIGINT}
+  </select>
+
+    <!--获取用户的所有权限-->
+  <select id="listStringPerms" parameterType="Long" resultType="String">
+    select perm.permission_url
+    from db_permission perm
+    join db_role_permission_relation rp on perm.id = rp.permission_id
+    join db_user_role_relation ur on rp.role_id = ur.role_id
+    where ur.user_id = #{id,jdbcType=BIGINT}
+  </select>
+
+    <!--列表-->
+  <select id="listUserDOs" parameterType="com.example.service.model.UserDO" resultMap="userRoleRelationResultMap">
+    select *
+    from db_user
+    where 1=1
+    <if test="name != null">
+        and name like CONCAT('%', #{name}, '%')
+    </if>
+    <if test="username != null and username != ''">
+        and username = #{username}
+    </if>
+    <if test="idNumber != null">
+        and idNumber like CONCAT('%', #{idNumber}, '%')
+    </if>
+    order by created_at DESC
+  </select>
+
+    <!--关联角色-->
+  <select id="listRoles" parameterType="java.lang.Long" resultMap="roleResultMap">
+    select role.*
+    from db_role role
+    join db_user_role_relation ur on role.id = ur.role_id
+    where ur.user_id = #{id}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from db_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insertSelective" keyProperty="id" useGeneratedKeys="true" parameterType="com.example.service.model.UserDO">
+    insert into db_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="career != null">
+        career,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="career != null">
+        #{career,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.service.model.UserDO">
+    update db_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="career != null">
+        career = #{career,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
