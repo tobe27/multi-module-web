@@ -37,12 +37,15 @@
     1. 配置
     2. 生产消息
     3. 消费消息
+8. spring-cloud-* ：微服务，基于spring cloud的微服务
+    1. 服务注册中心-eureka server
+    2. 服务provider - eureka client
+    3. 服务consumer - ribbon
 ---
 ### 待添加模块功能
 
 1. spring-boot-quartz: 定时任务
 2. spring-boot-redis: 缓存
 3. spring-boot-oauth: OAuth2认证
-4. spring-boot-microservice: 微服务
 
 ---
