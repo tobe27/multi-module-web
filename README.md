@@ -42,11 +42,14 @@
     2. 服务provider - eureka client
     3. 服务consumer及负载均衡 - ribbon
     4. 断路器hystrix
+9. spring-boot-quartz: 定时任务,基于quartz的定时任务
+    1. spring的定时任务
+    2. quartz定时任务
+    3. 触发器定时表达式规则
 ---
 ### 待添加模块功能
 
-1. spring-boot-quartz: 定时任务
+1. spring-boot-oauth: OAuth2认证
 2. spring-boot-redis: 缓存
-3. spring-boot-oauth: OAuth2认证
 
 ---
