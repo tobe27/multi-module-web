@@ -40,7 +40,8 @@
 8. spring-cloud-* ：微服务，基于spring cloud的微服务
     1. 服务注册中心-eureka server
     2. 服务provider - eureka client
-    3. 服务consumer - ribbon
+    3. 服务consumer及负载均衡 - ribbon
+    4. 断路器hystrix
 ---
 ### 待添加模块功能
 
