@@ -13,6 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.Id;
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 /**
@@ -45,6 +48,7 @@ public class DepartmentRepositoryTest {
 
     @Test
     public void jpaServiceTest() {
+        System.out.println(Optional.ofNullable(new Department().setId(4L).setName("行政部门")).map(Department::getId).filter(Id -> Id < 5).orElse(5L));
         System.out.println(departmentService.findAll(1, 10));
     }
 
