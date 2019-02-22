@@ -6,6 +6,6 @@ package com.example.springbootpattern.builder;
 public class WrapperPacking implements Packing {
     @Override
     public String pack() {
-        return "Packed By Wrapper";
+        return "By Wrapper";
     }
 }

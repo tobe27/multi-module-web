@@ -6,6 +6,6 @@ package com.example.springbootpattern.builder;
 public class BottlePacking implements Packing {
     @Override
     public String pack() {
-        return "Packed By Bottle";
+        return "By Bottle";
     }
 }

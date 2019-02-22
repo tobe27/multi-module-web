@@ -1,6 +1,8 @@
 package com.example.springbootpattern.builder;
 
 
+import com.example.springbootpattern.facade.Memory;
+
 /**
  * 创建型模式-建造者模式
  *
@@ -33,36 +35,49 @@ package com.example.springbootpattern.builder;
  */
 public class MealBuilder {
 
-    // 蔬菜汉堡套餐
-    public Meal prepareVegMeal() {
-        Meal meal = new Meal();
-        meal.addItem(new VegBurger());
-        meal.addItem(new Coke());
-        return meal;
+    private Meal meal;
+
+    public MealBuilder() {
+        meal = new Meal();
     }
 
-    // 无蔬菜汉堡套餐
-    public Meal prepareNoVegMeal() {
-        Meal meal = new Meal();
-        meal.addItem(new ChickenBurger());
-        meal.addItem(new Pepsi());
+    // 添加汉堡
+    public MealBuilder addBurger(Burger burger) {
+        meal.addItem(burger);
+        return this;
+    }
+
+    // 添加饮料
+    public MealBuilder addDrink(ColdDrink coldDrink) {
+        meal.addItem(coldDrink);
+        return this;
+    }
+
+    public Meal build() {
         return meal;
     }
 
     // ------------------------------------------Main--------------------------------------
     public static void main(String[] args) {
-        MealBuilder mealBuilder = new MealBuilder();
+
+        // 每一个套餐都需要新建一个Builder实例
 
         // 蔬菜汉堡套餐
-        Meal vegMeal = mealBuilder.prepareVegMeal();
+        Meal vegMeal = new MealBuilder().addBurger(new VegBurger()).addDrink(new Coke()).build();
         System.out.println("Veg Meal");
         vegMeal.showItems();
         System.out.println("Total Cost : " + vegMeal.getCost());
 
         // 无蔬菜汉堡套餐
-        Meal noVegMeal = mealBuilder.prepareNoVegMeal();
+        Meal noVegMeal = new MealBuilder().addBurger(new ChickenBurger()).addDrink(new Pepsi()).build();
         System.out.println("No Veg Meal");
         noVegMeal.showItems();
         System.out.println("Total Cost : " + noVegMeal.getCost());
+
+        // 双倍的快乐
+        Meal doubleMeal = new MealBuilder().addBurger(new ChickenBurger()).addBurger(new VegBurger()).addDrink(new Coke()).addDrink(new Pepsi()).build();
+        System.out.println("Double Meal");
+        doubleMeal.showItems();
+        System.out.println("Total Cost : " + doubleMeal.getCost());
     }
 }
