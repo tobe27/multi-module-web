@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>spring-cloud-eureka-client-8762</artifactId>
+    <artifactId>spring-boot-entity</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-eureka-client-8762</name>
+    <name>spring-boot-entity</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -20,21 +20,7 @@
     </properties>
 
     <dependencies>
-        <!--引入实体类模块-->
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>spring-boot-entity</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>2.1.0.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>

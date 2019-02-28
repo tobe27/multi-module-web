@@ -1,6 +1,6 @@
 package com.example.springcloudribbon.controller;
 
-import com.example.springcloudribbon.model.HelloEntity;
+import com.example.springbootentity.entity.HelloEntity;
 import com.example.springcloudribbon.service.HelloRibbonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

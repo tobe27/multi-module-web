@@ -1,7 +1,7 @@
 package com.example.springcloudribbon.service;
 
 import com.alibaba.fastjson.JSON;
-import com.example.springcloudribbon.model.HelloEntity;
+import com.example.springbootentity.entity.HelloEntity;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

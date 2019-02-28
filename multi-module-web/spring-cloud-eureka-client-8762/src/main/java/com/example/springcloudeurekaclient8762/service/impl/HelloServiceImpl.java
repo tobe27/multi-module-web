@@ -1,6 +1,6 @@
 package com.example.springcloudeurekaclient8762.service.impl;
 
-import com.example.springcloudeurekaclient8762.model.HelloEntity;
+import com.example.springbootentity.entity.HelloEntity;
 import com.example.springcloudeurekaclient8762.service.HelloService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

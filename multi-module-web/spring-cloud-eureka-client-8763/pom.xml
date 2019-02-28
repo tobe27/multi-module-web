@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+        <!--引入实体类模块-->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>spring-boot-entity</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

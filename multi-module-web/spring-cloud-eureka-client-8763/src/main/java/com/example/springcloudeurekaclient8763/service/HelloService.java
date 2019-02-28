@@ -1,6 +1,6 @@
 package com.example.springcloudeurekaclient8763.service;
 
-import com.example.springcloudeurekaclient8763.model.HelloEntity;
+import com.example.springbootentity.entity.HelloEntity;
 
 /**
  * @author CREATED BY L.C.Y on 2019-2-28

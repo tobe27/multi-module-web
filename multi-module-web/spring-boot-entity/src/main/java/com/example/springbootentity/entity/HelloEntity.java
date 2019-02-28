@@ -1,4 +1,4 @@
-package com.example.springcloudribbon.model;
+package com.example.springbootentity.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

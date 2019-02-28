@@ -1,6 +1,6 @@
 package com.example.springcloudeurekaclient8762.controller;
 
-import com.example.springcloudeurekaclient8762.model.HelloEntity;
+import com.example.springbootentity.entity.HelloEntity;
 import com.example.springcloudeurekaclient8762.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
