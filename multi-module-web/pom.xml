@@ -26,6 +26,17 @@
         <module>spring-boot-activiti</module>
         <module>spring-boot-mongodb</module>
         <module>spring-boot-mq</module>
+        <module>spring-boot-entity</module>
+        <module>spring-boot-jpa</module>
+        <module>spring-boot-pattern</module>
+        <module>spring-boot-quartz</module>
+        <module>spring-cloud-config-client</module>
+        <module>spring-cloud-config-server</module>
+        <module>spring-cloud-eureka</module>
+        <module>spring-cloud-eureka-client-8762</module>
+        <module>spring-cloud-eureka-client-8763</module>
+        <module>spring-cloud-ribbon</module>
+        <module>spring-cloud-zuul</module>
     </modules>
 
     <properties>
