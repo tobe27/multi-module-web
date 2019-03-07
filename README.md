@@ -50,8 +50,8 @@
     1. 创建型模式
     2. 行为型模式
     3. 结构性模式
-11. spring-boot-jpa: 基于JPA的ORM，不用显示写SQL语句
-12. spring-boot-entity: 实体类，最底层被依赖模块
+11. spring-boot-jpa: 基于JPA的ORM，不用显式写SQL语句
+12. spring-boot-entity: 实体类，被依赖模块
 ---
 ### 待添加模块功能
 
