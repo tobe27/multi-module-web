@@ -40,8 +40,11 @@
 8. spring-cloud-* ：微服务，基于spring cloud的微服务
     1. 服务注册中心-eureka server
     2. 服务provider - eureka client
-    3. 服务consumer及负载均衡 - ribbon
+    3. 服务consumer与负载均衡 - ribbon
     4. 断路器hystrix
+    5. 网关zuul
+    6. 分布式配置config
+    7. 监控actuator
 9. spring-boot-quartz: 定时任务,基于quartz的定时任务
     1. spring的定时任务
     2. quartz定时任务
