@@ -33,11 +33,13 @@ public class ResultBean extends LinkedHashMap<String, Object> {
 
     /**
      * 请求成功并返回数据
+     * 如果是列表则判断是否为空
      * @param data 返回的数据
      * @return
      */
     public ResultBean success(Object data) {
-        if (data == null) {
+        boolean isEmptyList = (data instanceof List<?>) && ((List<?>) data).isEmpty();
+        if (data == null || isEmptyList) {
             this.put(CODE, HttpCodeEnum.SUCCESS_BUT_NO_CONTENT.getCode());
             this.put(MESSAGE, HttpCodeEnum.SUCCESS_BUT_NO_CONTENT);
             return this;
@@ -89,7 +91,5 @@ public class ResultBean extends LinkedHashMap<String, Object> {
         this.put(key, data);
         return this;
     }
-
-
 
 }
