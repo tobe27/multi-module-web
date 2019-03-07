@@ -8,5 +8,5 @@ public interface Container {
      * 获取迭代器
      * @return
      */
-    Iterator getIterator();
+    Iterator iterator();
 }

@@ -41,7 +41,7 @@ public class NameContainer implements Container {
      * @return
      */
     @Override
-    public Iterator getIterator() {
+    public Iterator iterator() {
         return new NameIterator();
     }
 
@@ -83,7 +83,7 @@ public class NameContainer implements Container {
 
     public static void main(String[] args) {
         NameContainer nameContainer = new NameContainer();
-        for (Iterator nameIterator = nameContainer.getIterator(); nameIterator.hasNext();) {
+        for (Iterator nameIterator = nameContainer.iterator(); nameIterator.hasNext();) {
             String name = (String) nameIterator.next();
             System.out.println("Name: " + name);
         }
