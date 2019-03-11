@@ -19,17 +19,19 @@
     </parent>
 
     <modules>
+        <module>spring-boot-activiti</module>
         <module>spring-boot-common</module>
+        <module>spring-boot-entity</module>
+        <module>spring-boot-jdk</module>
+        <module>spring-boot-jpa</module>
+        <module>spring-boot-mongodb</module>
+        <module>spring-boot-mq</module>
+        <module>spring-boot-pattern</module>
+        <module>spring-boot-quartz</module>
         <module>spring-boot-service</module>
         <module>spring-boot-shiro</module>
         <module>spring-boot-web</module>
-        <module>spring-boot-activiti</module>
-        <module>spring-boot-mongodb</module>
-        <module>spring-boot-mq</module>
-        <module>spring-boot-entity</module>
-        <module>spring-boot-jpa</module>
-        <module>spring-boot-pattern</module>
-        <module>spring-boot-quartz</module>
+
         <module>spring-cloud-config-client</module>
         <module>spring-cloud-config-server</module>
         <module>spring-cloud-eureka</module>
