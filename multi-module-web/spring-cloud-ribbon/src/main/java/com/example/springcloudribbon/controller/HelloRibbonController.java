@@ -26,12 +26,12 @@ public class HelloRibbonController {
         this.helloRibbonService = helloRibbonService;
     }
 
-    @GetMapping("/")
-    public String getHello(String message) {
-        return helloRibbonService.sayHello(message);
+    @GetMapping("/hello")
+    public String getHello(String name) {
+        return helloRibbonService.sayHello(name);
     }
 
-    @PostMapping("/")
+    @PostMapping("/hi")
     public HelloEntity getHelloEntity(@RequestBody Map map) {
         return helloRibbonService.getHello(new HelloEntity().setMessage(map.get("message").toString()));
     }
