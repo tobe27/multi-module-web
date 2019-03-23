@@ -33,16 +33,18 @@ public class HelloRibbonService {
         return restTemplate.getForObject("http://SERVICE-HELLO/hello?name={name}", String.class, paramMap);
     }
 
+    @HystrixCommand(fallbackMethod = "getHelloFailure")
     public HelloEntity getHello(HelloEntity entity) {
-        System.out.println(JSON.toJSONString(entity, true));
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        Map<String, Object> params = new HashMap<>(16);
-        params.put("message", entity.getMessage());
-        HttpEntity httpEntity = new HttpEntity(params, headers);
+//        System.out.println(JSON.toJSONString(entity, true));
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        Map<String, Object> params = new HashMap<>(16);
+//        params.put("message", entity.getMessage());
+//        HttpEntity httpEntity = new HttpEntity(params, headers);
+        // return restTemplate.postForObject("http://SERVICE-HELLO/hi", httpEntity, HelloEntity.class);
         // 两种方式都可以，接口默认接收参数是JSON格式
-        // restTemplate.postForObject("http://SERVICE-HELLO/hi", entity, HelloEntity.class);
-        return restTemplate.postForObject("http://SERVICE-HELLO/hi", httpEntity, HelloEntity.class);
+        return restTemplate.postForObject("http://SERVICE-HELLO/hi", entity, HelloEntity.class);
+
     }
 
 
@@ -55,4 +57,7 @@ public class HelloRibbonService {
         return "SERVICE-HELLO is not available" + name;
     }
 
+    public HelloEntity getHelloFailure(HelloEntity entity) {
+        return new HelloEntity().setName("服务关闭").setMessage("Hystrix熔断");
+    }
 }
