@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class HelloEntity {
-    String name;
-    String message;
+    public class HelloEntity {
+        String name;
+        String message;
 }

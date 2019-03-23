@@ -37,6 +37,7 @@
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-eureka-client-8762</module>
         <module>spring-cloud-eureka-client-8763</module>
+        <module>spring-cloud-feign</module>
         <module>spring-cloud-ribbon</module>
         <module>spring-cloud-zuul</module>
     </modules>
