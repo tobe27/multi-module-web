@@ -14,11 +14,11 @@ import java.io.UnsupportedEncodingException;
 public class RocketMqProducer {
     public static void main(String[] args) throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("rocket");
-        producer.setNamesrvAddr("localhost:9876");
+        producer.setNamesrvAddr("115.159.155.78:9876");
         producer.start();
 
         for (int i = 0; i < 5; i ++) {
-            Message message = new Message("TopicTest", "TagA", ("Hello Rocket" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+            Message message = new Message("Topic", "TagA", ("Hello Rocket" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult result = producer.send(message);
             System.out.printf("%s%n", result);
 

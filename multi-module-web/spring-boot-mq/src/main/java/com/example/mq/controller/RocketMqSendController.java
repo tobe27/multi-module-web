@@ -23,14 +23,14 @@ public class RocketMqSendController {
     @PostMapping("/message")
     public void sendMqFromRocketMq() throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("rocket");
-        producer.setNamesrvAddr("localhost:9876");
+        producer.setNamesrvAddr("115.159.155.78:9876");
         producer.start();
 
         for (int i = 0; i < 5; i ++) {
             MessageEntity messageEntity = new MessageEntity();
             messageEntity.setMessage("message from rocket :" + i).setPurchase(new BigDecimal("5.33"));
 
-            Message message = new Message("TopicTest", "TagA", JSON.toJSONString(messageEntity).getBytes(RemotingHelper.DEFAULT_CHARSET));
+            Message message = new Message("Topic", "TagA", JSON.toJSONString(messageEntity).getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult result = producer.send(message);
             System.out.printf("%s%n", result);
 
